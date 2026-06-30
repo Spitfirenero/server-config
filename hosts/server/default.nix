@@ -16,6 +16,7 @@ in
     ../../modules/ssh.nix
     ../../modules/firewall.nix
     ../../modules/packages.nix
+    ../../modules/scripts.nix
     ../../modules/fail2ban.nix
     ../../modules/tailscale.nix
     ../../modules/docker.nix
