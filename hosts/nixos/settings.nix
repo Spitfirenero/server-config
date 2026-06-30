@@ -4,4 +4,8 @@
   timeZone = "Australia/Sydney";
   locale = "en_AU.UTF-8";
   consoleKeyMap = "us";
+  bootLoader = {
+    systemdBootEnable = true;
+    efiCanTouchEfiVariables = true;
+  };
 }

@@ -25,5 +25,15 @@
         type = lib.types.str;
         description = "Console keyboard layout for the host.";
       };
+
+      options.my.boot.systemdBoot.enable = lib.mkOption {
+        type = lib.types.bool;
+        description = "Enable systemd-boot for the host.";
+      };
+
+      options.my.boot.efi.canTouchEfiVariables = lib.mkOption {
+        type = lib.types.bool;
+        description = "Allow NixOS to modify EFI boot variables.";
+      };
     };
 }
