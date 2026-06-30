@@ -1,0 +1,2 @@
+hosts/nixos/hardware-configuration.nix
+flake.lock
