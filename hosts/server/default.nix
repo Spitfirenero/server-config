@@ -20,6 +20,7 @@ in
     ../../modules/fail2ban.nix
     ../../modules/tailscale.nix
     ../../modules/docker.nix
+    ../../modules/samba.nix
   ];
 
   my = {
