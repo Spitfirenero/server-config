@@ -10,6 +10,7 @@
 
   boot.loader.systemd-boot.enable = config.my.boot.systemdBoot.enable;
   boot.loader.efi.canTouchEfiVariables = config.my.boot.efi.canTouchEfiVariables;
+  boot.loader.efi.efiSysMountPoint = config.my.boot.efi.sysMountPoint;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

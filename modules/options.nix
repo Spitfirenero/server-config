@@ -35,5 +35,10 @@
         type = lib.types.bool;
         description = "Allow NixOS to modify EFI boot variables.";
       };
+
+      options.my.boot.efi.sysMountPoint = lib.mkOption {
+        type = lib.types.str;
+        description = "Mount point for the EFI system partition.";
+      };
     };
 }

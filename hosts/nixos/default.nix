@@ -27,5 +27,6 @@ in
     consoleKeyMap = hostSettings.consoleKeyMap;
     boot.systemdBoot.enable = hostSettings.bootLoader.systemdBootEnable;
     boot.efi.canTouchEfiVariables = hostSettings.bootLoader.efiCanTouchEfiVariables;
+    boot.efi.sysMountPoint = hostSettings.bootLoader.efiSysMountPoint;
   };
 }

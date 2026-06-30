@@ -7,5 +7,6 @@
   bootLoader = {
     systemdBootEnable = true;
     efiCanTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
   };
 }
