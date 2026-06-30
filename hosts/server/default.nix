@@ -17,6 +17,8 @@ in
     ../../modules/firewall.nix
     ../../modules/packages.nix
     ../../modules/fail2ban.nix
+    ../../modules/tailscale.nix
+    ../../modules/docker.nix
   ];
 
   my = {
