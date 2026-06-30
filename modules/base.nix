@@ -13,6 +13,7 @@
   boot.loader.efi.efiSysMountPoint = config.my.boot.efi.sysMountPoint;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.warn-dirty = false;
 
   security.sudo = {
     enable = true;
