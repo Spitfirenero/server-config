@@ -37,6 +37,7 @@ let
       -in "$out/request.csr" \
       -CA ${localCa}/ca.pem \
       -CAkey ${localCa}/ca.key \
+      -CAserial ca.srl \
       -CAcreateserial \
       -out "$out/cert.pem" \
       -days 3650 \
