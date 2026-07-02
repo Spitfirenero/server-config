@@ -1,6 +1,15 @@
 { config, pkgs, lib, ... }:
 
 let
+  localCa = pkgs.runCommandLocal "local-ca" { nativeBuildInputs = [ pkgs.openssl ]; } ''
+    mkdir -p "$out"
+    openssl genrsa -out "$out/ca.key" 4096
+    openssl req -x509 -new -nodes -key "$out/ca.key" \
+      -out "$out/ca.pem" \
+      -subj "/CN=themoser-local-ca" \
+      -days 3650
+  '';
+
   localCert = domain: name: pkgs.runCommandLocal "${name}-local-cert" { nativeBuildInputs = [ pkgs.openssl ]; } ''
     mkdir -p "$out"
     cat > openssl.cnf <<EOF
@@ -20,12 +29,18 @@ let
     IP.1 = 192.168.0.200
     EOF
 
-    openssl req -x509 -newkey rsa:4096 -nodes \
-      -keyout "$out/key.pem" \
+    openssl genrsa -out "$out/key.pem" 4096
+    openssl req -new -key "$out/key.pem" -out "$out/request.csr" -config openssl.cnf
+
+    openssl x509 -req \
+      -in "$out/request.csr" \
+      -CA ${localCa}/ca.pem \
+      -CAkey ${localCa}/ca.key \
+      -CAcreateserial \
       -out "$out/cert.pem" \
-      -config openssl.cnf \
-      -extensions v3_req \
-      -days 3650
+      -days 3650 \
+      -extfile openssl.cnf \
+      -extensions v3_req
   '';
 
   nextcloudCert = localCert config.my.nextcloudDomain "nextcloud";
@@ -35,8 +50,7 @@ in
 
 {
   security.pki.certificates = [
-    (builtins.readFile "${nextcloudCert}/cert.pem")
-    (builtins.readFile "${collaboraCert}/cert.pem")
+    (builtins.readFile "${localCa}/ca.pem")
   ];
 
   services.nextcloud = {
