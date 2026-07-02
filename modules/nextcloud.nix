@@ -72,6 +72,14 @@ in
 
   services.collabora-online = {
     enable = true;
+    settings = {
+      net.post_allow.host = [
+        "https://${config.my.nextcloudDomain}"
+        "https://${config.my.collaboraDomain}"
+        "127\\.0\\.0\\.1"
+        "::1"
+      ];
+    };
     aliasGroups = [
       {
         host = "https://${config.my.nextcloudDomain}";
