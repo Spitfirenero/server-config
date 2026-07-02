@@ -18,6 +18,6 @@
     owner = "acme";
     group = "acme";
     mode = "0400";
-    path = ../secrets/cloudflare-dns-api-token.yaml;
+    path = builtins.toString ../secrets/cloudflare-dns-api-token.yaml;
   };
 }
