@@ -8,6 +8,7 @@ let
       -out "$out/ca.pem" \
       -subj "/CN=themoser-local-ca" \
       -days 3650
+    chmod 0644 "$out/ca.key" "$out/ca.pem"
   '';
 
   localCert = domain: name: pkgs.runCommandLocal "${name}-local-cert" { nativeBuildInputs = [ pkgs.openssl ]; } ''
