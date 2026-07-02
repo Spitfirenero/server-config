@@ -17,12 +17,12 @@
           "192.168.0.0/24 allow"
         ];
         local-zone = [
-          '"themoser.net. static"'
+          "themoser.net. static"
         ];
         local-data = [
-          ''"themoser.net. IN A 192.168.0.200"''
-          ''"cloud.themoser.net. IN A 192.168.0.200"''
-          ''"office.themoser.net. IN A 192.168.0.200"''
+          "themoser.net. IN A 192.168.0.200"
+          "cloud.themoser.net. IN A 192.168.0.200"
+          "office.themoser.net. IN A 192.168.0.200"
         ];
       };
 
