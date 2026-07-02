@@ -7,6 +7,8 @@ let
 in
 
 {
+  security.pki.certificateFiles = [ "/var/lib/acme/ca/cert.pem" ];
+
   security.acme = {
     acceptTerms = true;
     defaults.email = config.my.acmeEmail;
@@ -54,7 +56,7 @@ in
   services.collabora-online = {
     enable = true;
     settings = {
-      server_name = "${config.my.collaboraDomain}:443";
+      server_name = config.my.collaboraDomain;
       net.post_allow.host = [
         "https://${config.my.nextcloudDomain}"
         "https://${config.my.collaboraDomain}"
@@ -64,7 +66,7 @@ in
     };
     aliasGroups = [
       {
-        host = "https://${config.my.collaboraDomain}:443";
+        host = "https://${config.my.collaboraDomain}";
         aliases = [ ];
       }
     ];
