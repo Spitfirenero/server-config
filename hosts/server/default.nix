@@ -19,8 +19,9 @@ in
     ../../modules/scripts.nix
     ../../modules/fail2ban.nix
     ../../modules/tailscale.nix
-    ../../modules/docker.nix
     ../../modules/samba.nix
+    ../../modules/sops.nix
+    ../../modules/nextcloud.nix
   ];
 
   my = {
@@ -29,6 +30,9 @@ in
     timeZone = hostSettings.timeZone;
     locale = hostSettings.locale;
     consoleKeyMap = hostSettings.consoleKeyMap;
+    domain = hostSettings.domain;
+    nextcloudDomain = hostSettings.nextcloudDomain;
+    acmeEmail = hostSettings.acmeEmail;
     boot.systemdBoot.enable = hostSettings.bootLoader.systemdBootEnable;
     boot.efi.canTouchEfiVariables = hostSettings.bootLoader.efiCanTouchEfiVariables;
     boot.efi.sysMountPoint = hostSettings.bootLoader.efiSysMountPoint;

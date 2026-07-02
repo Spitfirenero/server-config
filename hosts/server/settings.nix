@@ -4,6 +4,9 @@
   timeZone = "Australia/Sydney";
   locale = "en_AU.UTF-8";
   consoleKeyMap = "us";
+  domain = "themoser.net";
+  nextcloudDomain = "themoser.net";
+  acmeEmail = "chris@themoser.net";
   bootLoader = {
     systemdBootEnable = true;
     efiCanTouchEfiVariables = true;

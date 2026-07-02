@@ -40,5 +40,20 @@
         type = lib.types.str;
         description = "Mount point for the EFI system partition.";
       };
+
+      options.my.domain = lib.mkOption {
+        type = lib.types.str;
+        description = "Primary domain used for hosted services.";
+      };
+
+      options.my.nextcloudDomain = lib.mkOption {
+        type = lib.types.str;
+        description = "Fully qualified domain name for Nextcloud.";
+      };
+
+      options.my.acmeEmail = lib.mkOption {
+        type = lib.types.str;
+        description = "Email address used for ACME certificate registration.";
+      };
     };
 }
