@@ -7,8 +7,6 @@ let
 in
 
 {
-  security.pki.certificateFiles = [ "/var/lib/acme/ca/cert.pem" ];
-
   security.acme = {
     acceptTerms = true;
     defaults.email = config.my.acmeEmail;
