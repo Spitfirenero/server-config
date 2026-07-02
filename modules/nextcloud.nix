@@ -47,14 +47,14 @@ in
   };
 
   services.nginx.virtualHosts.${config.my.nextcloudDomain} = {
-    sslCertificate = "${nextcloudCertPath}/fullchain.pem";
-    sslCertificateKey = "${nextcloudCertPath}/key.pem";
+    useACMEHost = nextcloudCertName;
     forceSSL = true;
   };
 
   services.collabora-online = {
     enable = true;
     settings = {
+      server_name = "${config.my.collaboraDomain}:443";
       net.post_allow.host = [
         "https://${config.my.nextcloudDomain}"
         "https://${config.my.collaboraDomain}"
@@ -64,15 +64,14 @@ in
     };
     aliasGroups = [
       {
-        host = "https://${config.my.nextcloudDomain}";
+        host = "https://${config.my.collaboraDomain}:443";
         aliases = [ ];
       }
     ];
   };
 
   services.nginx.virtualHosts.${config.my.collaboraDomain} = {
-    sslCertificate = "${nextcloudCertPath}/fullchain.pem";
-    sslCertificateKey = "${nextcloudCertPath}/key.pem";
+    useACMEHost = nextcloudCertName;
     forceSSL = true;
     locations."/" = {
       proxyPass = "https://127.0.0.1:${toString config.services.collabora-online.port}";
