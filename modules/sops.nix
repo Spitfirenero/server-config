@@ -13,4 +13,10 @@
     group = "nextcloud";
     mode = "0400";
   };
+
+  sops.secrets.cloudflare-dns-api-token = {
+    owner = "acme";
+    group = "acme";
+    mode = "0400";
+  };
 }

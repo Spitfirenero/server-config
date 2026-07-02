@@ -19,6 +19,7 @@ in
     ../../modules/scripts.nix
     ../../modules/fail2ban.nix
     ../../modules/tailscale.nix
+    ../../modules/dns.nix
     ../../modules/samba.nix
     ../../modules/sops.nix
     ../../modules/nextcloud.nix
