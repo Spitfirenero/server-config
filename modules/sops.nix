@@ -1,17 +1,12 @@
 { ... }:
 
 {
-  # Use explicit secret files instead of a single defaultSopsFile to allow
-  # splitting secrets across multiple encrypted files. Set a harmless absolute
-  # path so the option type (absolute path) is satisfied; we rely on explicit
-  # `path` entries below instead of the default file.
-  sops.defaultSopsFile = "/dev/null";
+  # Use the repository encrypted files as the source (`sopsFile`) and write
+  # decrypted secrets to absolute paths under `/etc/sops/secrets/` so the
+  # installer doesn't try to overwrite files inside the Nix store/source.
+  sops.defaultSopsFile = builtins.toString ../secrets/nextcloud.yaml;
   sops.defaultSopsFormat = "yaml";
-
-  # Skip strict validation that sops files live in the Nix store. We manage
-  # secrets as explicit per-secret files (see `sops.secrets.<name>.path`).
-  # This avoids requiring `/dev/null` to exist in the Nix store during eval.
-  sops.validateSopsFiles = false;
+  sops.validateSopsFiles = true;
 
   sops.age.sshKeyPaths = [
     "/etc/ssh/ssh_host_ed25519_key"
@@ -21,7 +16,9 @@
     owner = "nextcloud";
     group = "nextcloud";
     mode = "0400";
-    path = builtins.toString ../secrets/nextcloud.yaml;
+    # Target path on the running system where the decrypted secret will live
+    path = "/etc/sops/secrets/nextcloud-admin-pass.yaml";
+    # Source encrypted file in the repo (Nix store path)
     sopsFile = builtins.toString ../secrets/nextcloud.yaml;
   };
 
@@ -29,7 +26,8 @@
     owner = "acme";
     group = "acme";
     mode = "0400";
-    path = builtins.toString ../secrets/cloudflare-dns-api-token.yaml;
+    # Target path on the running system for ACME to read
+    path = "/etc/sops/secrets/cloudflare-dns-api-token.yaml";
     sopsFile = builtins.toString ../secrets/cloudflare-dns-api-token.yaml;
   };
 }

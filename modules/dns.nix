@@ -20,9 +20,9 @@
           "themoser.net. static"
         ];
         local-data = [
-          "themoser.net. IN A 192.168.0.200"
-          "cloud.themoser.net. IN A 192.168.0.200"
-          "office.themoser.net. IN A 192.168.0.200"
+          "themoser.net. A 192.168.0.200"
+          "cloud.themoser.net. A 192.168.0.200"
+          "office.themoser.net. A 192.168.0.200"
         ];
       };
 
