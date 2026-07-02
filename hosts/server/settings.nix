@@ -6,6 +6,7 @@
   consoleKeyMap = "us";
   domain = "themoser.net";
   nextcloudDomain = "cloud.themoser.net";
+  collaboraDomain = "office.themoser.net";
   acmeEmail = "chris@themoser.net";
   bootLoader = {
     systemdBootEnable = true;

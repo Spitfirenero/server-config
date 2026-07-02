@@ -32,6 +32,7 @@ in
     consoleKeyMap = hostSettings.consoleKeyMap;
     domain = hostSettings.domain;
     nextcloudDomain = hostSettings.nextcloudDomain;
+    collaboraDomain = hostSettings.collaboraDomain;
     acmeEmail = hostSettings.acmeEmail;
     boot.systemdBoot.enable = hostSettings.bootLoader.systemdBootEnable;
     boot.efi.canTouchEfiVariables = hostSettings.bootLoader.efiCanTouchEfiVariables;

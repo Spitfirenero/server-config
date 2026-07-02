@@ -19,5 +19,8 @@
   networking.defaultGateway = "192.168.0.1";
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
 
-  networking.hosts."192.168.0.200" = [ config.my.nextcloudDomain ];
+  networking.hosts."192.168.0.200" = [
+    config.my.nextcloudDomain
+    config.my.collaboraDomain
+  ];
 }

@@ -51,6 +51,11 @@
         description = "Fully qualified domain name for Nextcloud.";
       };
 
+      options.my.collaboraDomain = lib.mkOption {
+        type = lib.types.str;
+        description = "Fully qualified domain name for Collabora Online.";
+      };
+
       options.my.acmeEmail = lib.mkOption {
         type = lib.types.str;
         description = "Email address used for ACME certificate registration.";
