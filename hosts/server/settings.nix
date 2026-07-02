@@ -5,7 +5,7 @@
   locale = "en_AU.UTF-8";
   consoleKeyMap = "us";
   domain = "themoser.net";
-  nextcloudDomain = "themoser.net";
+  nextcloudDomain = "cloud.themoser.net";
   acmeEmail = "chris@themoser.net";
   bootLoader = {
     systemdBootEnable = true;
