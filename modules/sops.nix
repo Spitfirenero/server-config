@@ -2,8 +2,10 @@
 
 {
   # Use explicit secret files instead of a single defaultSopsFile to allow
-  # splitting secrets across multiple encrypted files.
-  sops.defaultSopsFile = null;
+  # splitting secrets across multiple encrypted files. Set a harmless absolute
+  # path so the option type (absolute path) is satisfied; we rely on explicit
+  # `path` entries below instead of the default file.
+  sops.defaultSopsFile = "/dev/null";
   sops.defaultSopsFormat = "yaml";
 
   sops.age.sshKeyPaths = [
