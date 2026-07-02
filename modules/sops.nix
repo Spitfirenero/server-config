@@ -8,6 +8,11 @@
   sops.defaultSopsFile = "/dev/null";
   sops.defaultSopsFormat = "yaml";
 
+  # Skip strict validation that sops files live in the Nix store. We manage
+  # secrets as explicit per-secret files (see `sops.secrets.<name>.path`).
+  # This avoids requiring `/dev/null` to exist in the Nix store during eval.
+  sops.validateSopsFiles = false;
+
   sops.age.sshKeyPaths = [
     "/etc/ssh/ssh_host_ed25519_key"
   ];
