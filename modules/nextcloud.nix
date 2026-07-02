@@ -90,6 +90,7 @@ in
   services.collabora-online = {
     enable = true;
     settings = {
+      ssl.ca_file_path = "${localCa}/ca.pem";
       net.post_allow.host = [
         "https://${config.my.nextcloudDomain}"
         "https://${config.my.collaboraDomain}"
