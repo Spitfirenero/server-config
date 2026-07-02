@@ -1,7 +1,9 @@
 { ... }:
 
 {
-  sops.defaultSopsFile = ../secrets/nextcloud.yaml;
+  # Use explicit secret files instead of a single defaultSopsFile to allow
+  # splitting secrets across multiple encrypted files.
+  sops.defaultSopsFile = null;
   sops.defaultSopsFormat = "yaml";
 
   sops.age.sshKeyPaths = [
@@ -12,6 +14,7 @@
     owner = "nextcloud";
     group = "nextcloud";
     mode = "0400";
+    path = builtins.toString ../secrets/nextcloud.yaml;
   };
 
   sops.secrets.cloudflare-dns-api-token = {
