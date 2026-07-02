@@ -139,6 +139,7 @@ in
     script = ''
       ${nextcloudOcc} config:app:set richdocuments wopi_url --value="https://${config.my.collaboraDomain}"
       ${nextcloudOcc} config:app:set richdocuments public_wopi_url --value="https://${config.my.collaboraDomain}"
+      ${nextcloudOcc} config:app:set richdocuments wopi_allowlist --value="192.168.0.200,127.0.0.1,::1"
       ${nextcloudOcc} config:app:set richdocuments wopi_callback_url --value="https://${config.my.nextcloudDomain}"
       ${nextcloudOcc} config:system:set allow_local_remote_servers --type bool --value true
       ${nextcloudOcc} richdocuments:activate-config --wopi-url "https://${config.my.collaboraDomain}" --callback-url "https://${config.my.nextcloudDomain}"
