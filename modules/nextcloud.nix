@@ -35,6 +35,7 @@ in
 
 {
   security.pki.certificates = [
+    (builtins.readFile "${nextcloudCert}/cert.pem")
     (builtins.readFile "${collaboraCert}/cert.pem")
   ];
 
