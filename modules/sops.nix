@@ -22,6 +22,7 @@
     group = "nextcloud";
     mode = "0400";
     path = builtins.toString ../secrets/nextcloud.yaml;
+    sopsFile = builtins.toString ../secrets/nextcloud.yaml;
   };
 
   sops.secrets.cloudflare-dns-api-token = {
@@ -29,5 +30,6 @@
     group = "acme";
     mode = "0400";
     path = builtins.toString ../secrets/cloudflare-dns-api-token.yaml;
+    sopsFile = builtins.toString ../secrets/cloudflare-dns-api-token.yaml;
   };
 }
